@@ -13,16 +13,35 @@
 
     </div>
 
-    <div id="karty">
-      <p>sfafdsadsfd</p>
-      <div v-for="elem in $root.karty">
-        <div class="karta">
+    <div id="karty1" style="display:flex">
+      <div v-for="(elem,index) in $root.karty2" >
+        <div class="karta" :class="{'selected':elem.selected}" @click="attack(elem , index)">
 
         <p>{{elem.code}}</p>
-        <p>{{elem.mana}}</p>
+        <p>Mana: {{elem.mana}}</p>
 
-        <p>{{elem.life}}</p>
-        <p>{{elem.damage}}</p>
+        <p>Życie: {{elem.life}}</p>
+        <p>Obrażenia: {{elem.damage}}</p>
+
+
+
+        </div>
+      </div>
+      
+
+    </div>
+
+
+
+    <div id="karty2" style="display:flex">
+      <div v-for="(elem,index) in $root.karty" >
+        <div class="karta" :class="{'selected':elem.selected}"  @click="selectCard(elem,index)">
+
+        <p>{{elem.code}}</p>
+        <p>Mana: {{elem.mana}}</p>
+
+        <p>Życie: {{elem.life}}</p>
+        <p>Obrażenia: {{elem.damage}}</p>
 
 
 
@@ -58,14 +77,42 @@ export default {
   },
   data(){
     return {
-     karty:[
-      {
-        code:'szkielet',
-        mana:1,
-        life:1,
-        damage:1
+     selectedCard:{},
+     selectedCardindex:0,
+     selected:false,
+
+  
+    }
+  },
+  methods:{
+    selectCard(elem,index){
+      console.log('afsdsdfsds');
+      if (this.selected == false){
+        this.selected = true;
+        elem.selected = true;
+        this.selectedCard = elem;
+        this.selectedCardindex= index;
       }
-    ]
+    },
+    attack(elem,index){
+      if(this.selected){
+
+      elem.life -= this.selectedCard.damage;
+      this.selectedCard.used = true;
+      this.selected = false;
+      this.selectedCard.life -= elem.damage;
+      this.selectedCard.selected = false;
+      }
+
+    console.log(index);
+      if(elem.life <= 0){
+        this.$root.karty2.splice(index,1);
+      }
+
+       if(this.selectedCard.life <= 0){
+        this.$root.karty.splice(this.selectedCardindex,1);
+      }
+
     }
   }
 }
@@ -82,7 +129,11 @@ export default {
 }
 
 .karta{
-  border:1px black solid;border-radius:5%;height:200px;width:200px
+  border:1px black solid;border-radius:5%;height:200px;width:200px;margin:2px
+}
+
+.selected{
+   background-color: coral;
 }
 
 </style>
