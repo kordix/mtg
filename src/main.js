@@ -5,45 +5,111 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  data:{
-    karty:[
+  data: {
+    mana:1,
+    players: [
       {
-        code:'Kościotrup',
-        mana:1,
-        life:2,
-        damage:1,
-        selected:false,
-        used:false,
-
+        id: 0,
+        imie: 'Zbigniew',
+        life: 30,
+        mana:0,
+        karty:[
+       
+        ]
       },
       {
-        code:'Pipa',
+        id: 1,
+        imie: 'Ignacy',
+        life: 30,
         mana:1,
-        life:1,
-        damage:1,
-        selected:false,
-        used:false,
-
-
+        karty:[]
       }
     ],
-    karty2:[
+    kartystol: [
+   
+    ],
+    kartystol2: [
       {
-        code:'Ciota',
-        mana:1,
-        life:1,
-        damage:1,
-        selected:false
+        code: 'Ciota',
+        mana: 1,
+        life: 1,
+        damage: 1,
+        selected: false
 
       },
       {
-        code:'Kujon',
-        mana:1,
-        life:1,
-        damage:1,
-        selected:false
+        code: 'Kujon',
+        mana: 1,
+        life: 1,
+        damage: 1,
+        selected: false
+      },
+      {
+        code: 'Czaja',
+        mana: 2,
+        life: 2,
+        damage: 2,
+        selected: false,
+        used: false,
+      },
+      {
+        code: 'lewak',
+        mana: 3,
+        life: 3,
+        damage: 2,
+        selected: false,
+        used: false,
+      },
+      
+    ],
+    kartytalia1: [
+      {
+        code: 'Faja',
+        mana: 1,
+        life: 1,
+        damage: 1,
+        selected: false,
+        used: false,
 
-      }
+      },
+      {
+        code: 'Czaja',
+        mana: 2,
+        life: 2,
+        damage: 2,
+        selected: false,
+        used: false,
+
+      },
+      {
+        code: 'Prawak',
+        mana: 3,
+        life: 3,
+        damage: 2,
+        selected: false,
+        used: false,
+      },
+      {
+        code: 'Kościotrup',
+        mana: 1,
+        life: 2,
+        damage: 1,
+        selected: false,
+        used: false,
+
+      },
+      {
+        code: 'Pipa',
+        mana: 1,
+        life: 1,
+        damage: 1,
+        selected: false,
+        used: false,
+      },
+
+    ],
+    kartytalia2: [
+
     ]
 
 
